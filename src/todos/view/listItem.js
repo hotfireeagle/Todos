@@ -34,6 +34,7 @@ const ListItem = ({value, finished, handleReverse, handleDelete}) => {
 				"width":"458.9px",
 				"paddingLeft": "20px",
 				"fontSize": "40px",
+				"overflow": "hidden",
 				"verticalAlign": "bottom"
 			}}>
 				{value}
