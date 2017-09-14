@@ -11,9 +11,7 @@ const formStyle = {
 }
 
 const inputStyle = {
-	"display": "inline-block",
-	"width": "600px",
-	"height": "50px"
+	"width": "600px"
 }
 
 class AddTodo extends Component{
@@ -52,7 +50,7 @@ class AddTodo extends Component{
 		return (
 			<form style={formStyle} action="#" onSubmit={this.handleSubmit}>
 				<Input
-					style={{"width": "600px"}}
+					style={inputStyle}
 					value={this.state.value}
 					onChange={this.handleChange}
 					required

@@ -13,7 +13,8 @@ import ListItem from "./listItem"
 
 const ulStyle = {
 	"width": "600px",
-	"margin": "50px auto auto auto"
+	"marginLeft": "auto",
+	"marginRight": "auto"
 }
 
 /**
@@ -21,16 +22,17 @@ const ulStyle = {
  */
 const TodoList = ({todos, handleReverse, handleDelete}) => {
 	return (
-		<ul style={{"width": "600px","marginLeft": "auto","marginRight": "auto"}}>
+		<ul style={ulStyle}>
 		{
 		todos.map((todo) => {
 			return (
 				<ListItem 
 					key={todo.id}
+					id={todo.id}
 					value={todo.text} 
 					//在这里的问题是，如果在这里不适用narrow function是否可行,答案是可行
-					handleReverse={() => {handleReverse(todo.id)}}
-					handleDelete={() => {handleDelete(todo.id)}}
+					handleReverse={handleReverse}
+					handleDelete={handleDelete}
 					finished={todo.finished}
 				/>
 			)

@@ -1,45 +1,44 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {Button} from 'semantic-ui-react'
+import {connect} from "react-redux"
 
 const liStyle = {
-	"width": "600px"
+	"position": "relative",
+	"width": "600px",
+	"height": "40px",
+	"marginBottom": "10px"
 }
 
 const buttonStyle = {
-	"display": "inline-block",
-	"width": "50px",
-	"height": "80px"
+	"marginRight": "0px",
+	"height": "40px",
+	"fontFamily": "FangSong"
 }
 
 const spanStyle = {
-	"display": "inline-block",
-	"width": "496px",
-	"height": "80px",
-	"textAlign": "center",
+	"height": "40px",
+	"lineHeight": "40px",
+	"width":"458.9px",
+	"paddingLeft": "20px",
+	"fontSize": "40px",
 	"overflow": "hidden",
 	"verticalAlign": "bottom"
 }
 
 
 
-const ListItem = ({value, finished, handleReverse, handleDelete}) => {
+const ListItem = ({value, finished, onReverse, onDelete}) => {
 	return (
-		<li style={{"position": "relative","width": "600px","height": "40px","marginBottom": "10px"}}>
-			<Button style={{"marginRight": "0px","height": "40px","fontFamily": "FangSong"}} onClick={handleReverse}>反转</Button>
+		<li style={liStyle}>
+			<Button style={buttonStyle} onClick={onReverse}>反转</Button>
 			<span style={{
-				"display":"inline-block","textDecoration": finished ? "line-through" : "none",
-				"height": "40px",
-				"lineHeight": "40px",
-				"width":"458.9px",
-				"paddingLeft": "20px",
-				"fontSize": "40px",
-				"overflow": "hidden",
-				"verticalAlign": "bottom"
+				...spanStyle,
+				"display":"inline-block","textDecoration": finished ? "line-through" : "none"
 			}}>
 				{value}
 			</span>
-			<Button style={{"marginRight": "0px","height": "40px","fontFamily": "FangSong"}} onClick={handleDelete}>删除</Button>
+			<Button style={buttonStyle} onClick={onDelete}>删除</Button>
 		</li>
 	)
 }
@@ -51,4 +50,14 @@ ListItem.propTypes = {
 	"handleDelete": PropTypes.func.isRequired
 }
 
-export default ListItem
+const mapStateToProps = (state, ownProps) => ({
+	"value": ownProps.value,
+	"finished": ownProps.finished
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+	"onReverse": () => {ownProps.handleReverse(ownProps.id)},
+	"onDelete": () => {ownProps.handleDelete(ownProps.id)}
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListItem)
