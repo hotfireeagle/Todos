@@ -6,7 +6,6 @@
 
 ### **2.项目总结**
 + 1.react相关：[文章地址](http://www.jianshu.com/p/d94fbca56dbc)
-+ 2.css相关：[baseline对齐问题](#)
 + 3.性能优化：[文章地址](http://www.jianshu.com/p/f0c28159b392)
 
 ---
